@@ -11,6 +11,7 @@ import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.CANdle;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj.Preferences;
 import frc.robot.commands.ElevatorCommand;
@@ -45,6 +46,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.PowerDistribution;
+
 // import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
 
@@ -218,4 +220,12 @@ setBrakeMode(true);
   public Command getAutonomousCommand() {
     return m_autoMethod.getAutonomousCommand();
   }
+  
+  public Command getDopeAuto() {
+    // This method loads the auto when it is called, however, it is recommended
+    // to first load your paths/autos when code starts, then return the
+    // pre-loaded auto/path
+    return new PathPlannerAuto("DopeAuto");
+  }
+
 }
